@@ -1,0 +1,284 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    color: #333;
+}
+
+header {
+    background-color: #6f42c1;
+    color: white;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.1rem;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.column-left {
+    flex: 2;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.column-right {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 1rem;
+}
+
+.video-card {
+    padding: 1rem;
+}
+
+
+.video-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.5rem;
+}
+.video-card-header h2 {
+    border-bottom: none; /* Remove double border */
+    padding-bottom: 0;
+    margin: 0;
+}
+.video-controls button {
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 0.8rem;
+    margin-left: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+#btn-start {
+    background-color: #28a745;
+    color: white;
+}
+#btn-start:hover {
+    background-color: #218838;
+}
+#btn-stop {
+    background-color: #dc3545;
+    color: white;
+}
+#btn-stop:hover {
+    background-color: #c82333;
+}
+#btn-settings {
+    background-color: #6c757d;
+    color: white;
+}
+#btn-settings:hover {
+    background-color: #5a6268;
+}
+.video-controls button:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+#video-stream {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    background-color: #222;
+    margin-top: 1rem; /* Add space between buttons and video */
+}
+
+/* Gesture Status */
+.status-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.status-box div {
+    display: flex;
+    flex-direction: column;
+}
+
+.status-box small {
+    color: #777;
+    font-size: 0.8rem;
+}
+
+.status-label {
+    font-weight: 600;
+    color: #888;
+}
+
+.status-box.active {
+    border-color: #28a745;
+    background-color: #f0fff4;
+}
+
+.status-box.active .status-label {
+    color: #28a745;
+}
+
+
+.graph-card {
+    height: 490px; 
+    display: flex;
+    flex-direction: column;
+}
+
+#volumeChart {
+    max-height: 100%;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+
+.metric-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.metric-box {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.metric-value {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #6f42c1;
+    line-height: 1.2;
+}
+
+.metric-label {
+    display: block;
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+/* --- NEW STYLES FOR LOGIN PAGE & LOGOUT BUTTON --- */
+
+/* Centers the login box */
+.login-container {
+    max-width: 450px;
+    margin: 2rem auto;
+    width: 100%;
+}
+
+/* Styles for the login form elements */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Important for 100% width */
+    font-size: 1rem;
+}
+
+/* Login button to match the header theme */
+.btn-login {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #6f42c1; /* Theme purple */
+    color: white;
+}
+
+.btn-login:hover {
+    background-color: #5a349a;
+}
+
+/* Style for login error messages */
+.error {
+    color: #dc3545;
+    background-color: #fbebee;
+    border: 1px solid #dc3545;
+    padding: 0.75rem;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* Style for the new logout button in index.html */
+#btn-logout {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 0.8rem;
+    margin-left: 0.25rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #ffc107; /* Warning yellow */
+    color: #212529;
+    line-height: normal; /* Align with other buttons */
+}
+
+#btn-logout:hover {
+    background-color: #e0a800;
+}

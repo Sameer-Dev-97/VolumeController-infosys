@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gesture Volume Control</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Gesture Volume Control System</h1>
+    </header>
+
+    <main class="container">
+      <div class="column-left">
+        <div class="card video-card">
+          <div class="video-card-header">
+            <h2>Live Camera</h2>
+            <div class="video-controls">
+              <button id="btn-start">Start</button>
+              <button id="btn-stop">Stop</button>
+              <button id="btn-settings">Settings</button>
+              <a href="{{ url_for('logout') }}" id="btn-logout">Logout</a>
+            </div>
+          </div>
+          <img id="video-stream" src="" alt="Stream paused. Press Start." />
+        </div>
+        <div class="card graph-card">
+          <h2>Volume History (Distance vs. Volume)</h2>
+          <canvas id="volumeChart"></canvas>
+        </div>
+      </div>
+
+      <div class="column-right">
+        <div class="card">
+          <h2>Gesture Recognition</h2>
+          <div class="status-box" id="status-open">
+            <div>
+              <strong>Open Hand</strong>
+              <small>Fingers &gt;= 4</small>
+            </div>
+            <span class="status-label">Inactive</span>
+          </div>
+          <div class="status-box" id="status-pinch">
+            <div>
+              <strong>Pinch</strong>
+              <small>Distance &lt; 60px &amp; Fingers &lt;= 2</small>
+            </div>
+            <span class="status-label">Inactive</span>
+          </div>
+          <div class="status-box" id="status-closed">
+            <div>
+              <strong>Closed</strong>
+              <small>Fingers == 0</small>
+            </div>
+            <span class="status-label">Inactive</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Performance Metrics</h2>
+          <div class="metric-grid">
+            <div class="metric-box">
+              <span id="metric-volume" class="metric-value">0%</span>
+              <small class="metric-label">Current Volume</small>
+            </div>
+            <div class="metric-box">
+              <span id="metric-distance" class="metric-value">0mm</span>
+              <small class="metric-label">Finger Distance</small>
+            </div>
+            <div class="metric-box">
+              <span id="metric-accuracy" class="metric-value">98%</span>
+              <small class="metric-label">Accuracy</small>
+            </div>
+            <div class="metric-box">
+              <span id="metric-response" class="metric-value">0ms</span>
+              <small class="metric-label">Response Time</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+    <h1>Made by @Sameer</h1>
+  </body>
+</html>
