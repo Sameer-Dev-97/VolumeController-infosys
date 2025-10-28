@@ -91,7 +91,7 @@ clone git repo
 2.. Create a Virtual Environment
 
 
-# On Windows
+
 python -m venv venv
 venv\Scripts\activate
 
@@ -118,7 +118,7 @@ pip install -r requirements.txt
 ![alt text](<Screenshot 2025-10-28 181108.png>)
 
 
-5. Run the Server: From your terminal (with the virtual environment activated), run:
+# Run the Server: From your terminal (with the virtual environment activated), run:
 
 
 python app.py
