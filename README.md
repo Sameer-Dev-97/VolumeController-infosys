@@ -118,7 +118,7 @@ pip install -r requirements.txt
 ![alt text](<Screenshot 2025-10-28 181108.png>)
 
 
-# Run the Server: From your terminal (with the virtual environment activated), run:
+# Run the Server
 
 
 python app.py
