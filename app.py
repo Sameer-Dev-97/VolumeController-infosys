@@ -4,9 +4,7 @@ import numpy as np
 import math
 import base64
 import time
-# --- MODIFIED: Added request, redirect, url_for, session ---
 from flask import Flask, render_template, request, redirect, url_for, session
-# --- MODIFIED: Added disconnect ---
 from flask_socketio import SocketIO, emit, disconnect
 
 # --- Pycaw setup for Windows Volume Control ---
@@ -26,7 +24,6 @@ except Exception as e:
 
 # --- Flask & SocketIO Setup ---
 app = Flask(__name__)
-# Session requires a secret key. You already have this, which is great.
 app.config['SECRET_KEY'] = 'your_secret_key' 
 socketio = SocketIO(app)
 
@@ -40,7 +37,8 @@ cap = cv2.VideoCapture(0)
 cap.set(3, 640)
 cap.set(4, 360)
 
-# --- Global Flags ---
+
+
 stream_active = False
 task_running = False
 
@@ -136,29 +134,29 @@ def process_gestures():
     print("Stream loop stopped.")
     task_running = False
 
-# --- NEW: Login Route ---
+# --- Login page---
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Handles the login page."""
     error = None
     if request.method == 'POST':
-        # Hardcoded check for username and password
+        # check for username and password
         if request.form['username'] == 'sameer' and request.form['password'] == 'sameer':
             session['logged_in'] = True
             return redirect(url_for('index'))
         else:
             error = 'Invalid Credentials. Please try again.'
-    # Show login page on GET request or if login failed
+   
     return render_template('login.html', error=error)
 
-# --- NEW: Logout Route ---
+# --- Logout Route ---
 @app.route('/logout')
 def logout():
     """Logs the user out."""
     session.pop('logged_in', None)
     return redirect(url_for('login'))
 
-# --- MODIFIED: Protected Index Route ---
+# --- Protected Index Route ---
 @app.route('/')
 def index():
     """Serves the main application page, protected by login."""
@@ -166,7 +164,7 @@ def index():
         return redirect(url_for('login'))
     return render_template('index.html')
 
-# --- MODIFIED: Protected SocketIO Handlers ---
+
 @socketio.on('connect')
 def handle_connect():
     """Client connects, check for session."""
@@ -185,7 +183,7 @@ def handle_disconnect():
 @socketio.on('start_stream')
 def handle_start_stream():
     """Client requested to start the stream."""
-    # Extra check for safety
+    
     if 'logged_in' not in session or not session['logged_in']:
         return
         
