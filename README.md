@@ -105,18 +105,8 @@ pip install -r requirements.txt
 
 4. Project Structure
 
-Gesture-Volume-Control/
-│
-├── app.py              # Main Flask/SocketIO/CV application
-├── requirements.txt    # Python dependencies
-│
-├── templates/
-│   ├── index.html      # Main dashboard UI
-│   └── login.html      # Login page
-│
-└── static/
-    ├── app.js          # Frontend JavaScript
-    └── style.css       # project's stylesheet
+![Uploading image.png…]()
+
 
 
 
