@@ -18,9 +18,6 @@ It also features a live web dashboard built with Flask and Socket.IO to monitor 
 * **Stream Controls:** Start and Stop the gesture detection from the web UI.
 
 
-> **Note:** Replace the line above with a screenshot or, even better, a GIF of your project working! This is the most important part of a "beautiful" README.
-
----
 
 ## 💻 Tech Stack
 
@@ -49,23 +46,33 @@ This project combines several technologies:
 ## ⚙️ How It Works
 
 1.  **Server Setup:** A Flask server is initialized with Socket.IO.
+
 2.  **User Login:** The user must log in via the `/login` page (credentials are hardcoded in `app.py`).
+
 3.  **Start Stream:** When the user clicks "Start" on the dashboard, a `start_stream` event is sent to the server.
+
 4.  **Gesture Loop:** The server starts the `process_gestures` function in a background thread.
+
 5.  **CV Processing:**
+
     * OpenCV captures a frame from the webcam.
     * Mediapipe processes the frame to find hand landmarks.
+
 6.  **Volume Calculation:**
+
     * The script calculates the distance between the thumb tip (Landmark 4) and the index finger tip (Landmark 8).
     * This distance is interpolated from a pixel range (e.g., 30-250) to a volume scalar (0.0-1.0).
     * `pycaw` uses this scalar to set the system's master volume.
+
 7.  **Data Streaming:**
+
     * The video frame is encoded as Base64 and sent to the client via a `video_frame` event.
     * All metrics (volume %, distance, gesture, etc.) are sent via an `update_data` event.
+
 8.  **Frontend Update:** The client-side JavaScript listens for these events and updates the dashboard elements (video, metrics, gesture status, and chart) instantly.
+
 9.  **Stop Stream:** Clicking "Stop" sets a flag that gracefully terminates the gesture processing loop on the server.
 
----
 
 ## 🔧 Installation & Setup
 
@@ -78,7 +85,7 @@ Follow these steps to get the project running on your local machine.
 * A Windows operating system (for `pycaw`)
 
 ### 1. Clone the Repository
-
+clone git repo
 
 
 2.. Create a Virtual Environment
@@ -103,19 +110,16 @@ comtypes
 
 pip install -r requirements.txt
 
+
 4. Project Structure
 
-![Uploading image.png…]()
 
 
+![alt text](<Screenshot 2025-10-28 181108.png>)
 
 
-    How to Use
-Run the Server: From your terminal (with the virtual environment activated), run:
+5. Run the Server: From your terminal (with the virtual environment activated), run:
 
 
 python app.py
 
-```bash
-git clone [https://github.com/your-username/your-project-repo.git](https://github.com/your-username/your-project-repo.git)
-cd your-project-repo
